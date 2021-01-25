@@ -1,0 +1,191 @@
+{
+    "exams": {
+        "jeemock1": [{
+            "testid": "asdfghjkl",
+            "password": "qwertyuiop",
+            "questions": [{
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                }
+            ],
+            "answers": [{
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                }
+            ]
+        }]
+    },
+
+    {
+        "jeemock2": [{
+            "testid": "asdfghjkl",
+            "password": "qwertyuiop",
+            "questions": [{
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                }
+            ],
+            "answers": [{
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                }
+            ]
+        }]
+    },
+
+    {
+        "jeemock3": [{
+            "testid": "asdfghjkl",
+            "password": "qwertyuiop",
+            "questions": [{
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "question1": "What temperature does water boil at?",
+                    "optionA": "50 degrees Celcius",
+                    "optionB": "25 degrees Celcius",
+                    "optionC": "100 degrees Celcius",
+                    "optionD": "150 degrees Celcius"
+                }
+            ],
+            "answers": [{
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                },
+
+                {
+                    "questionid": "py@123",
+                    "answer": "100 degrees Celcius"
+                }
+            ]
+        }]
+    }
+
+}

@@ -1,0 +1,72 @@
+.card {
+    margin: 5px;
+}
+
+.small-box {
+    width: 50px;
+    height: 50px;
+}
+
+.card-body {
+    margin-top: 5px;
+    padding: 0;
+    border-width: 5px;
+}
+
+.card-subbody {
+    padding: 5px;
+    margin: 5px;
+    border-width: 5px;
+    display: flex;
+}
+
+
+.card-title {
+    display: inline;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    color:#606263;
+}
+
+.page-content {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.test-question {
+    width: 50%;
+    margin : 75px;
+    padding:50px;
+}
+
+.content-question {
+    
+
+}
+
+.subjects {
+    margin: 5px;
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+}
+
+.card-subtitle {
+    padding: 15px;
+    text-align: center;
+}
+
+h6 {
+    padding-left: 50px;
+}
+
+.nav-right {
+    float: right;
+}
+
+.nav-left {
+    float: left;
+    display: flex;
+    margin: 2px;
+}
