@@ -1,3 +1,20 @@
+#test-navbar {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    display: flex;
+}
+
+#left {
+    float:left;
+    width: 70%;
+}
+
+#right {
+    float: right;
+    width: 30%;
+}
+
 .card {
     margin: 5px;
 }
@@ -29,6 +46,11 @@
     color:#606263;
 }
 
+.content-question {
+    margin: 10px;
+    padding: 10px
+}
+
 .page-content {
     max-width: 50px;
     max-height: 50px;
@@ -36,16 +58,25 @@
 
 .test-question {
     width: 50%;
-    margin : 75px;
-    padding:50px;
+    margin-left : 75px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding:10px;
 }
 
-.content-question {
-    
-
+.test-navig {
+    width: 75%;
+    margin-left: 75px;
 }
 
 .subjects {
+    width: 150px;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+}
+
+.nav-buttons {
     margin: 5px;
     text-align: center;
     display: inline-block;
@@ -53,8 +84,9 @@
 }
 
 .card-subtitle {
-    padding: 15px;
+    padding: 20px;
     text-align: center;
+    margin-left: 15px;
 }
 
 h6 {
@@ -69,4 +101,83 @@ h6 {
     float: left;
     display: flex;
     margin: 2px;
+}
+
+table, tr, td {
+    border: 1px solid black;
+    padding: 5px;
+  }
+
+.pagination {
+    margin: 2px;
+    padding: 0;
+    width: 25px;
+}
+
+.not-visted {
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.not-answered {
+    text-align: center;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color: red;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.answered {
+    text-align: center;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color:green;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.marked-for-review {
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color:violet;
+    margin: 10px;
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.answered-marked-for-review {
+    text-align: center;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color: orange;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.explaination {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.test-footer {
+    clear: both;
+    margin-top: 2rem;
 }

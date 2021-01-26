@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-sm-6 d-flex justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">JEE MAINS MOCK TEST - 1</h5>
+          <p class="card-text">Click on the 'Take the Test' button to start the JEE Mains Mock Test.</p>
+          <a (click) = "submit()" class="btn btn-primary">Take the Test</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">JEE MAINS MOCK TEST - 2</h5>
+          <p class="card-text">Click on the 'Take the Test' button to start the JEE Mains Mock Test.</p>
+          <a href="#" class="btn btn-primary">Take the Test</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 d-flex justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">JEE MAINS MOCK TEST - 3</h5>
+          <p class="card-text">Click on the 'Take the Test' button to start the JEE Mains Mock Test.</p>
+          <a href="#" class="btn btn-primary">Take the Test</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">JEE MAINS MOCK TEST - 4</h5>
+          <p class="card-text">Click on the 'Take the Test' button to start the JEE Mains Mock Test.</p>
+          <a href="#" class="btn btn-primary">Take the Test</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="box2" *ngIf="questions">
+    <h1>Hello world</h1>
+
+    <div *ngFor="let test of questions">
+        <div *ngFor="let sub of test.Physics">
+            <p>Question - {{sub.question}}</p>
+            <p>Option A - {{sub.opt1}}</p>
+            <p>Option B - {{sub.opt2}}</p>
+        </div>
+        <div *ngFor="let sub of test.Chemistry">
+            <p>Question - {{sub.question}}</p>
+            <p>Option A - {{sub.opt1}}</p>
+            <p>Option B - {{sub.opt2}}</p>
+        </div>
+        <div *ngFor="let sub of test.Maths">
+            <p>Question - {{sub.question}}</p>
+            <p>Option A - {{sub.opt1}}</p>
+            <p>Option B - {{sub.opt2}}</p>
+        </div>
+    </div>

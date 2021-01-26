@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
        if (res.code==="success"){
          console.log(this.authService.getUsername());
          console.log(res.message);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/profile']);
 
        }
        else{

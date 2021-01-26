@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { TestComponent } from './test/test.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { TestComponent } from './test/test.component';
     HomeComponent,
     FooterComponent,
     TestComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

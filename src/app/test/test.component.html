@@ -1,4 +1,4 @@
-<div class="card" style="width: 100%;">
+<div id = "test-navbar" class="card" style="width: 98%; border: none;">
     <div class="card-body shadow-lg">
         <div class="nav-left">
             <img src="../../assets/img/circle-cropped.png" alt="Logo" style="width:35px;">
@@ -7,34 +7,188 @@
 
         <div class="nav-right">
                 <ul style="list-style: none;">
-                    <li>Name : Prithviraj Desai</li>
-                    <li>College : XYZ PU University</li>
+                    <li style="color: #606263;">Name : Prithviraj Desai</li>
+                    <hr style="margin: 5px;">
+                    <li style="color: #606263;">College : XYZ PU University</li>
                 </ul>
         </div>
   </div>
   </div>
-  <div class="card" style="width: 100%;">
-    <div class="card-subbody shadow-lg">
-      <h6 class="card-subtitle">JEE MAINS</h6>
-      <button mat-raised-button class = "subjects" >Physics</button>
-      <button mat-raised-button class = "subjects" >Chemistry</button>
-      <button mat-raised-button class = "subjects" >Maths</button>
+
+<div>
+    <div id="left">
+        <div class="card test-navig" style="width: 80%; background-color: #FAEDA8;">
+            <div class="card-subbody shadow-lg">
+              <h6 class="card-subtitle">JEE MAINS</h6>
+              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" >Physics</button>
+              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" >Chemistry</button>
+              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" >Maths</button>
+              <h6 class="card-subtitle">Time left: 02:59:59</h6>
+              
+            </div>
+        </div>
+        
+        <div class="card test-question">
+            <div class="card-body content-question">
+              <h5 class="card-title">Question No. {{index+1}}</h5>
+              <hr width=100%; style="margin: 20px;">
+              <h6 class="card-subtitle">{{question[index].que}}</h6>
+              <div>
+                  <div *ngFor="let choice of question[index].choices">
+                      <label for="choice_{{choice}}">
+                        <input id="choice_{{choice}}" [value]='choice' type="radio" name="choices" [(ngModel)]="ans">
+                        {{choice}}
+                      </label>
+                    </div>
+                  </div>
+            </div>
+            {{answers[0]}}, {{answers[1]}}, {{answers[2]}} <br>
+            
+            {{tempanswers[0]}}, {{tempanswers[1]}}, {{tempanswers[2]}} <br>
+        </div>
+        
+          <div class="card test-navig" style="width: 80%;">
+            <div class="card-subbody shadow-lg">
+              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: green;" (click) = "savenext(index)" >Save & Next</button>
+              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: orange;" >Save & Mark for Review</button>
+              <button mat-raised-button class = "nav-buttons" (click) = "reset()" >Clear Response</button>
+              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: violet;" >Mark for Review & Next</button>
+            </div>
+        </div>
+        
+        <div class = "test-navig" style=" width: 80%; background-color:#FAEDA8;">
+            <button mat-raised-button class = "nav-buttons" style="background-color: #606263; color:white;" (click) = "prev()" >&lt;&lt; Back</button>
+            <button mat-raised-button class = "nav-buttons" style="background-color: #606263; color:white;" (click) = "next()" >Next &gt;&gt;</button>
+            <button mat-raised-button class = "nav-buttons" style="margin-left: 220px; background-color: green; color: white;" >Submit</button>
+        
+        </div>
+    </div>
+
+    <div id = "right" style="height: 500px;overflow-y:scroll;">
+        <div>
+            <div class="not-visted">90</div><span class = "explaination">Not visted</span>
+            <div class="not-answered">90</div><span class = "explaination">Not Answered</span> <br>
+            <div class="answered">90</div><span class = "explaination">Answered</span>
+            <div class="marked-for-review">90</div><span class = "explaination">Marked for Review</span> <br>
+            <div class="answered-marked-for-review">90</div>
+            <span class = "explaination">
+                <span>Answered and Marked for Review</span>
+            </span>
+        
+
+        </div>
+        <div class="question-number">
+            <hr width="100%">
+            <h5 style="text-align: center;">Section A</h5>
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" (click) = "navigate(1)">01</a></li>
+                <li class="page-item"><a class="page-link" (click) = "navigate(2)">02</a></li>
+                <li class="page-item"><a class="page-link" (click) = "navigate(3)">03</a></li>
+                <li class="page-item"><a class="page-link" (click) = "navigate(4)">04</a></li>
+                <li class="page-item"><a class="page-link" href="#">05</a></li>
+                <li class="page-item"><a class="page-link" href="#">06</a></li>
+                <li class="page-item"><a class="page-link" href="#">07</a></li>
+                <li class="page-item"><a class="page-link" href="#">08</a></li>
+                <li class="page-item"><a class="page-link" href="#">09</a></li>
+                <li class="page-item"><a class="page-link" href="#">10</a></li>
+              </ul>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">11</a></li>
+                <li class="page-item"><a class="page-link" href="#">12</a></li>
+                <li class="page-item"><a class="page-link" href="#">13</a></li>
+                <li class="page-item"><a class="page-link" href="#">14</a></li>
+                <li class="page-item"><a class="page-link" href="#">15</a></li>
+                <li class="page-item"><a class="page-link" href="#">16</a></li>
+                <li class="page-item"><a class="page-link" href="#">17</a></li>
+                <li class="page-item"><a class="page-link" href="#">18</a></li>
+                <li class="page-item"><a class="page-link" href="#">19</a></li>
+                <li class="page-item"><a class="page-link" href="#">20</a></li>
+              </ul>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">21</a></li>
+                <li class="page-item"><a class="page-link" href="#">22</a></li>
+                <li class="page-item"><a class="page-link" href="#">23</a></li>
+                <li class="page-item"><a class="page-link" href="#">24</a></li>
+                <li class="page-item"><a class="page-link" href="#">25</a></li>
+                <li class="page-item"><a class="page-link" href="#">26</a></li>
+                <li class="page-item"><a class="page-link" href="#">27</a></li>
+                <li class="page-item"><a class="page-link" href="#">28</a></li>
+                <li class="page-item"><a class="page-link" href="#">29</a></li>
+                <li class="page-item"><a class="page-link" href="#">30</a></li>
+              </ul>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">41</a></li>
+                <li class="page-item"><a class="page-link" href="#">42</a></li>
+                <li class="page-item"><a class="page-link" href="#">43</a></li>
+                <li class="page-item"><a class="page-link" href="#">44</a></li>
+                <li class="page-item"><a class="page-link" href="#">45</a></li>
+                <li class="page-item"><a class="page-link" href="#">46</a></li>
+                <li class="page-item"><a class="page-link" href="#">47</a></li>
+                <li class="page-item"><a class="page-link" href="#">48</a></li>
+                <li class="page-item"><a class="page-link" href="#">49</a></li>
+                <li class="page-item"><a class="page-link" href="#">50</a></li>
+              </ul>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">51</a></li>
+                <li class="page-item"><a class="page-link" href="#">52</a></li>
+                <li class="page-item"><a class="page-link" href="#">53</a></li>
+                <li class="page-item"><a class="page-link" href="#">54</a></li>
+                <li class="page-item"><a class="page-link" href="#">55</a></li>
+                <li class="page-item"><a class="page-link" href="#">56</a></li>
+                <li class="page-item"><a class="page-link" href="#">57</a></li>
+                <li class="page-item"><a class="page-link" href="#">58</a></li>
+                <li class="page-item"><a class="page-link" href="#">59</a></li>
+                <li class="page-item"><a class="page-link" href="#">60</a></li>
+              </ul>
+
+              <hr width="100%">
+              <h5 style="text-align: center;">Section B</h5>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">61</a></li>
+                <li class="page-item"><a class="page-link" href="#">62</a></li>
+                <li class="page-item"><a class="page-link" href="#">63</a></li>
+                <li class="page-item"><a class="page-link" href="#">64</a></li>
+                <li class="page-item"><a class="page-link" href="#">65</a></li>
+                <li class="page-item"><a class="page-link" href="#">66</a></li>
+                <li class="page-item"><a class="page-link" href="#">67</a></li>
+                <li class="page-item"><a class="page-link" href="#">68</a></li>
+                <li class="page-item"><a class="page-link" href="#">69</a></li>
+                <li class="page-item"><a class="page-link" href="#">70</a></li>
+              </ul>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">71</a></li>
+                <li class="page-item"><a class="page-link" href="#">72</a></li>
+                <li class="page-item"><a class="page-link" href="#">73</a></li>
+                <li class="page-item"><a class="page-link" href="#">74</a></li>
+                <li class="page-item"><a class="page-link" href="#">75</a></li>
+                <li class="page-item"><a class="page-link" href="#">76</a></li>
+                <li class="page-item"><a class="page-link" href="#">77</a></li>
+                <li class="page-item"><a class="page-link" href="#">78</a></li>
+                <li class="page-item"><a class="page-link" href="#">79</a></li>
+                <li class="page-item"><a class="page-link" href="#">80</a></li>
+              </ul>
+
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">81</a></li>
+                <li class="page-item"><a class="page-link" href="#">82</a></li>
+                <li class="page-item"><a class="page-link" href="#">83</a></li>
+                <li class="page-item"><a class="page-link" href="#">84</a></li>
+                <li class="page-item"><a class="page-link" href="#">85</a></li>
+                <li class="page-item"><a class="page-link" href="#">86</a></li>
+                <li class="page-item"><a class="page-link" href="#">87</a></li>
+                <li class="page-item"><a class="page-link" href="#">88</a></li>
+                <li class="page-item"><a class="page-link" href="#">89</a></li>
+                <li class="page-item"><a class="page-link" href="#">90</a></li>
+              </ul>
+        </div>
+        
     </div>
 </div>
-
-<div class="card test-question">
-    <div class="card-body content-question">
-      <h5 class="card-title">Question 1</h5>
-      <hr width=100%;>
-      <h6 class="card-subtitle">What is Your language</h6>
-    </div>
-  </div>
-
-  <div class="card" style="width: 100%;">
-    <div class="card-subbody shadow-lg">
-      <button mat-raised-button class = "subjects" >Save & Next</button>
-      <button mat-raised-button class = "subjects" >Save & Mark for Review</button>
-      <button mat-raised-button class = "subjects" >Clear Response</button>
-      <button mat-raised-button class = "subjects" >Mark for Review & Next</button>
-    </div>
-</div>
+<br>
+<br>
