@@ -16,6 +16,7 @@
             "outputPath": "dist/AssistMe",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "sourceMap": false,
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
@@ -62,7 +63,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AssistMe:build"
+            "browserTarget": "AssistMe:build",
+            "sourceMap": false
           },
           "configurations": {
             "production": {

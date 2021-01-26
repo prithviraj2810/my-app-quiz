@@ -34,6 +34,7 @@ export class TestComponent implements OnInit {
   ]
 
   index=0
+  not_visited = 89
   ans: any
   answers: Array<any> = new Array(this.question.length).fill(null);
   tempanswers: Array<any> = new Array(this.question.length).fill(null);
@@ -59,6 +60,7 @@ export class TestComponent implements OnInit {
     this.answers[this.index] = this.ans
     this.index += 1;
     this.ans = this.answers[this.index]
+    this.not_visited -= 1
     this.radiostatus = false
   }
 
@@ -82,6 +84,7 @@ export class TestComponent implements OnInit {
     else {
       this.ans = this.tempanswers[this.index]
     }
+    this.not_visited -= 1
   }
 
   navigate(queno: any) {

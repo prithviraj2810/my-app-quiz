@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { AngularFireDatabase,AngularFireList,AngularFireObject } from '@angular/fire/database';
 import { AngularFireFunctions } from '@angular/fire/functions';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -84,16 +86,6 @@ export class FirebaseService {
   }
 
 
-  verifypasscode(exam_id,passcode){
-    const callable = this.fns.httpsCallable('verifyExamPasscode');
-    const data={ examid : exam_id, passcode: passcode};
-    return callable(data).toPromise().then((res)=>{
-      return res;
-    }).catch(err => { 
-      return { message : "server error" , code:'error'}});
-    
-    
-  }
 
   submitAnswers(exam_id, answers){
     const callable = this.fns.httpsCallable('submitAnswers');
