@@ -145,12 +145,15 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0);
-    if (this.answers[this.index + 1] == null) {
-      this.not_answered[this.index + 1] = 1
-      this.status[this.index + 1] = "notanswered"
-    } else {
-      this.not_answered[this.index + 1] = 0
+    if (this.answers[this.index+1] == null)  {
+      if (this.mark_rev[this.index + 1] != 1) {
+        this.not_answered[this.index + 1] = 1
+      this.status[this.index+1] = "notanswered"
+      this.answered[this.index + 1] = 0
+      }
     }
+    this.sum_mark_rev = this.mark_rev.reduce((a, b) => a + b, 0)
+    this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
   }
 
@@ -168,14 +171,17 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0)
-    if (this.answers[this.index - 1] == null) {
-      this.not_answered[this.index - 1] = 1
+    if (this.answers[this.index-1] == null)  {
+      if (this.mark_rev[this.index - 1] != 1) {
+        this.not_answered[this.index - 1] = 1
       this.status[this.index-1] = "notanswered"
-    } else {
-      this.not_answered[this.index - 1] = 0
+      this.answered[this.index - 1] = 0
+      }
     }
+    this.sum_mark_rev = this.mark_rev.reduce((a, b) => a + b, 0)
+    this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
-
+    
   }
 
   navigate(queno: any) {
@@ -244,6 +250,10 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0)
+    if (this.tempanswers[this.index -1 ] == null && this.status[this.index - 1] == "savenext" ) {
+      this.answered[this.index - 1] == 0
+    }
+    this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
     if (this.tempanswers[this.index - 1] == null || this.tempanswers[this.index -1] != null) {
       this.not_answered[this.index - 1] = 0
     }

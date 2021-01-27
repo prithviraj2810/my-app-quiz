@@ -33,7 +33,7 @@
               <h5 class="card-title">Question No. {{index+1}}</h5>
               <hr width=100%; style="margin: 20px;">
               <h6 class="card-subtitle">{{question[index].que}}</h6>
-              <div>
+              <div *ngIf = "index <= 4">
                   <div *ngFor="let choice of question[index].choices">
                       <label for="choice_{{choice}}">
                         <input id="choice_{{choice}}" [value]='choice' type="radio" name="choices" [(ngModel)]="ans">
@@ -41,12 +41,10 @@
                       </label>
                     </div>
                   </div>
-            </div>
-            {{answers[0]}}, {{answers[1]}}, {{answers[2]}} <br>
-            
-            {{status[0]}}, {{status[1]}}, {{status[2]}} <br>
-
-            
+                  <div *ngIf = "index > 4">
+                    <input type="text" [(ngModel)] = "ans" placeholder="Type your answer here">
+                  </div>
+                </div>
         </div>
         
           <div class="card test-navig" style="width: 80%;">
@@ -67,7 +65,7 @@
     </div>
 
     <div id = "right" style="height: 500px;overflow-y:scroll;">
-        <div>
+        <div style="border: solid 1px black; width: 100%">
             <div class="not-visted">{{sum_not_visited}}</div><span class = "explaination">Not visited</span>
             <div class="not-answered">{{sum_not_answered}}</div><span class = "explaination">Not Answered</span> <br>
             <div class="answered">{{sum_answered}}</div><span class = "explaination">Answered</span>
