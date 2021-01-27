@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
     return false;
   } else if (event.keyCode == 123) {
     return false; //Disable F12
-} else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+  } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
     return false; //Disable ctrl+shift+i
 }
 }

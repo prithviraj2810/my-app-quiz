@@ -181,3 +181,22 @@ table, tr, td {
     clear: both;
     margin-top: 2rem;
 }
+
+.page-link[data-status = 'savenext'] {
+    color: white;
+    background: green;
+}
+
+.page-link[data-status = 'notanswered'] {
+    color: white;
+    background: red;
+}
+.page-link[data-status = 'save_mark_rev'] {
+    color: white;
+    background: orange;
+}
+
+.page-link[data-status = 'mark_rev'] {
+    color: white;
+    background: violet;
+}

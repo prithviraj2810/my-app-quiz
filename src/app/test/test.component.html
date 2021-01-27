@@ -20,9 +20,9 @@
         <div class="card test-navig" style="width: 80%; background-color: #FAEDA8;">
             <div class="card-subbody shadow-lg">
               <h6 class="card-subtitle">JEE MAINS</h6>
-              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" >Physics</button>
-              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" >Chemistry</button>
-              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" >Maths</button>
+              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" (click) = "navigate(1)" >Physics</button>
+              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" (click) = "navigate(21)">Chemistry</button>
+              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" (click) = "navigate(41)">Maths</button>
               <h6 class="card-subtitle">Time left: 02:59:59</h6>
               
             </div>
@@ -44,15 +44,17 @@
             </div>
             {{answers[0]}}, {{answers[1]}}, {{answers[2]}} <br>
             
-            {{tempanswers[0]}}, {{tempanswers[1]}}, {{tempanswers[2]}} <br>
+            {{status[0]}}, {{status[1]}}, {{status[2]}} <br>
+
+            
         </div>
         
           <div class="card test-navig" style="width: 80%;">
             <div class="card-subbody shadow-lg">
               <button mat-raised-button class = "nav-buttons" style="color: white; background-color: green;" (click) = "savenext(index)" >Save & Next</button>
-              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: orange;" >Save & Mark for Review</button>
+              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: orange;" (click) = "save_mark_review(index)" >Save & Mark for Review</button>
               <button mat-raised-button class = "nav-buttons" (click) = "reset()" >Clear Response</button>
-              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: violet;" >Mark for Review & Next</button>
+              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: violet;" (click) = "mark_review(index)" >Mark for Review & Next</button>
             </div>
         </div>
         
@@ -66,11 +68,11 @@
 
     <div id = "right" style="height: 500px;overflow-y:scroll;">
         <div>
-            <div class="not-visted">{{not_visited}}</div><span class = "explaination">Not visted</span>
-            <div class="not-answered">90</div><span class = "explaination">Not Answered</span> <br>
-            <div class="answered">90</div><span class = "explaination">Answered</span>
-            <div class="marked-for-review">90</div><span class = "explaination">Marked for Review</span> <br>
-            <div class="answered-marked-for-review">90</div>
+            <div class="not-visted">{{sum_not_visited}}</div><span class = "explaination">Not visited</span>
+            <div class="not-answered">{{sum_not_answered}}</div><span class = "explaination">Not Answered</span> <br>
+            <div class="answered">{{sum_answered}}</div><span class = "explaination">Answered</span>
+            <div class="marked-for-review">{{sum_mark_rev}}</div><span class = "explaination">Marked for Review</span> <br>
+            <div class="answered-marked-for-review">{{sum_save_mark_rev}}</div>
             <span class = "explaination">
                 <span>Answered and Marked for Review</span>
             </span>
@@ -81,16 +83,16 @@
             <hr width="100%">
             <h5 style="text-align: center;">Section A</h5>
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" (click) = "navigate(1)">01</a></li>
-                <li class="page-item"><a class="page-link" (click) = "navigate(2)">02</a></li>
-                <li class="page-item"><a class="page-link" (click) = "navigate(3)">03</a></li>
-                <li class="page-item"><a class="page-link" (click) = "navigate(4)">04</a></li>
-                <li class="page-item"><a class="page-link" href="#">05</a></li>
-                <li class="page-item"><a class="page-link" href="#">06</a></li>
-                <li class="page-item"><a class="page-link" href="#">07</a></li>
-                <li class="page-item"><a class="page-link" href="#">08</a></li>
-                <li class="page-item"><a class="page-link" href="#">09</a></li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[0]}}" class="page-link" (click) = "navigate(1)">01</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[1]}}" class="page-link" (click) = "navigate(2)">02</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[2]}}" class="page-link" (click) = "navigate(3)">03</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[3]}}" class="page-link" (click) = "navigate(4)">04</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[4]}}" class="page-link" (click) = "navigate(5)">05</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[5]}}" class="page-link" (click) = "navigate(6)">06</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[6]}}" class="page-link" (click) = "navigate(7)">07</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[7]}}" class="page-link" (click) = "navigate(8)">08</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[8]}}" class="page-link" (click) = "navigate(9)">09</a></li>
+                <li class="page-item"><a attr.data-status = "{{status[9]}}" class="page-link" (click) = "navigate(10)">10</a></li>
               </ul>
 
               <ul class="pagination">
