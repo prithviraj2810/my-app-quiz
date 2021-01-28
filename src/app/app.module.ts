@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { TestComponent } from './test/test.component';
 import { ProfileComponent } from './profile/profile.component';
+import { InstructionsComponent } from './instructions/instructions.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ProfileComponent } from './profile/profile.component';
     FooterComponent,
     TestComponent,
     ProfileComponent,
+    InstructionsComponent,
   ],
   imports: [
     BrowserModule,

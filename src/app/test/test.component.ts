@@ -185,6 +185,14 @@ export class TestComponent implements OnInit {
   }
 
   navigate(queno: any) {
+    this.tempanswers[this.index] = this.ans 
+    if (this.answers[this.index] == null)  {
+      if (this.mark_rev[this.index] != 1) {
+        this.not_answered[this.index] = 1
+      this.status[this.index] = "notanswered"
+      }
+    }
+    this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
     this.index = queno - 1
     if (this.answers[this.index] != null) {
       this.ans = this.answers[this.index]
@@ -242,6 +250,11 @@ export class TestComponent implements OnInit {
   }
 
   mark_review(index: any) {
+    if (this.answers[this.index] != null) {
+      this.answers[this.index] = null
+      this.answered[this.index] = 0
+    }
+    this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
     this.tempanswers[this.index] = this.ans 
     this.index += 1;
     this.ans = this.tempanswers[this.index]

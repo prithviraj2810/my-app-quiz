@@ -16,7 +16,7 @@
 }
 
 .card {
-    margin: 5px;
+    margin: 5px
 }
 
 .small-box {
@@ -41,6 +41,7 @@
 .card-title {
     display: inline;
     margin: 5px;
+    margin-left: 15px;
     padding: 5px;
     text-align: center;
     color:#606263;
@@ -83,10 +84,52 @@
     width: 200px;
 }
 
+.savenext-button {
+    color: white; 
+    background-color: green;
+}
+.savenext-button:hover {
+    filter: brightness(90%);
+}
+
+.save-mark-rev {
+    color: white; 
+    background-color: orange
+}
+
+.save-mark-rev:hover {
+    filter: brightness(90%);
+}
+
+.clear-response {
+    color: black;
+    background-color: #e8eaed;
+}
+
+.clear-response:hover {
+    filter: brightness(90%);
+}
+
+.mark-rev {
+    color: white;
+    background-color: violet;
+}
+
+.mark-rev:hover {
+    filter: brightness(90%);
+}
+
+.next-prev-sub {
+    background-color: #606263;
+    color: white;
+}
+
+.next-prev-sub:hover {
+    filter: brightness(90%);
+}
 .card-subtitle {
+    text-align: left;
     padding: 20px;
-    text-align: center;
-    margin-left: 15px;
 }
 
 h6 {

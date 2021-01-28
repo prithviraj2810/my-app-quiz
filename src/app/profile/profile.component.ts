@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
     if (this.passcode == null || this.passcode == "") {
       location.href = "/profile"
     } else if ( this.passcode == password ) {
-      location.href = "/test"
+      location.href = "/instructions"
     } 
   }
 

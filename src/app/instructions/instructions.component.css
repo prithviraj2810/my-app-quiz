@@ -1,0 +1,90 @@
+.profile-navbar {
+    width: 100;
+    height: auto;
+    background-color: #e8eaed;
+    
+}
+
+.nav-left {
+    float: left;
+    display: flex;
+    margin: 5px;
+}
+
+.nav-right {
+    float: right;
+    margin: 5px;
+    margin-right: 10px;
+}
+.card-title {
+    margin: 5px;
+    padding: 5px;
+}
+
+.instructions {
+    width: 75%;
+    margin: auto;
+}
+
+.not-visted {
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.not-answered {
+    text-align: center;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color: red;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.answered {
+    text-align: center;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color:green;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.marked-for-review {
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color:violet;
+    margin: 10px;
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.answered-marked-for-review {
+    text-align: center;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: solid 1px black;
+    background-color: orange;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.explaination {
+    margin-left: 5px;
+    vertical-align: middle;
+}

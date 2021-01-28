@@ -1,15 +1,15 @@
-<div id = "test-navbar" class="card" style="width: 98%; border: none;">
+<div id = "test-navbar" class="card" style="width: 98%; border: none; background-color: #e8eaed;">
     <div class="card-body shadow-lg">
         <div class="nav-left">
             <img src="../../assets/img/circle-cropped.png" alt="Logo" style="width:35px;">
-            <h5 class = "card-title">AssessMe - The final touch for your preparations</h5>
+            <h5 class = "card-title"><u>AssessMe - The final touch for your preparations</u></h5>
         </div>
 
         <div class="nav-right">
                 <ul style="list-style: none;">
-                    <li style="color: #606263;">Name : Prithviraj Desai</li>
+                    <li style="color: #606263; margin: 0;">Name : Prithviraj Desai</li>
                     <hr style="margin: 5px;">
-                    <li style="color: #606263;">College : XYZ PU University</li>
+                    <li style="color: #606263; margin: 0;">College : XYZ PU University</li>
                 </ul>
         </div>
   </div>
@@ -20,9 +20,9 @@
         <div class="card test-navig" style="width: 80%; background-color: #FAEDA8;">
             <div class="card-subbody shadow-lg">
               <h6 class="card-subtitle">JEE MAINS</h6>
-              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" (click) = "navigate(1)" >Physics</button>
-              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" (click) = "navigate(21)">Chemistry</button>
-              <button mat-raised-button class = "subjects" style="background-color: #606263; color:white;" (click) = "navigate(41)">Maths</button>
+              <button mat-raised-button class = "subjects next-prev-sub" (click) = "navigate(1)" >Physics</button>
+              <button mat-raised-button class = "subjects next-prev-sub" (click) = "navigate(21)">Chemistry</button>
+              <button mat-raised-button class = "subjects next-prev-sub" (click) = "navigate(41)">Maths</button>
               <h6 class="card-subtitle">Time left: 02:59:59</h6>
               
             </div>
@@ -49,18 +49,19 @@
         
           <div class="card test-navig" style="width: 80%;">
             <div class="card-subbody shadow-lg">
-              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: green;" (click) = "savenext(index)" >Save & Next</button>
-              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: orange;" (click) = "save_mark_review(index)" >Save & Mark for Review</button>
-              <button mat-raised-button class = "nav-buttons" (click) = "reset()" >Clear Response</button>
-              <button mat-raised-button class = "nav-buttons" style="color: white; background-color: violet;" (click) = "mark_review(index)" >Mark for Review & Next</button>
+              <button mat-raised-button class = "nav-buttons savenext-button" (click) = "savenext(index)" >Save & Next</button>
+              <button mat-raised-button class = "nav-buttons save-mark-rev" (click) = "save_mark_review(index)" >Save & Mark for Review</button>
+              <button mat-raised-button class = "nav-buttons clear-response" (click) = "reset()" >Clear Response</button>
+              <button mat-raised-button class = "nav-buttons mark-rev" (click) = "mark_review(index)" >Mark for Review & Next</button>
             </div>
         </div>
         
-        <div class = "test-navig" style=" width: 80%; background-color:#FAEDA8;">
-            <button mat-raised-button class = "nav-buttons" style="background-color: #606263; color:white;" (click) = "prev()" >&lt;&lt; Back</button>
-            <button mat-raised-button class = "nav-buttons" style="background-color: #606263; color:white;" (click) = "next()" >Next &gt;&gt;</button>
-            <button mat-raised-button class = "nav-buttons" style="margin-left: 220px; background-color: green; color: white;" >Submit</button>
-        
+        <div class = "card test-navig" style=" width: 80%; background-color:#FAEDA8;">
+          <div class="card-subbody shadow-lg">
+            <button mat-raised-button class = "nav-buttons next-prev-sub" (click) = "prev()" >&lt;&lt; Back</button>
+            <button mat-raised-button class = "nav-buttons next-prev-sub" (click) = "next()" >Next &gt;&gt;</button>
+            <button mat-raised-button class = "nav-buttons savenext-button" style="margin-left: 220px;">Submit</button>
+          </div>
         </div>
     </div>
 
@@ -120,6 +121,19 @@
               </ul>
 
               <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">31</a></li>
+                <li class="page-item"><a class="page-link" href="#">32</a></li>
+                <li class="page-item"><a class="page-link" href="#">33</a></li>
+                <li class="page-item"><a class="page-link" href="#">34</a></li>
+                <li class="page-item"><a class="page-link" href="#">35</a></li>
+                <li class="page-item"><a class="page-link" href="#">36</a></li>
+                <li class="page-item"><a class="page-link" href="#">37</a></li>
+                <li class="page-item"><a class="page-link" href="#">38</a></li>
+                <li class="page-item"><a class="page-link" href="#">39</a></li>
+                <li class="page-item"><a class="page-link" href="#">40</a></li>
+              </ul>
+
+              <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">41</a></li>
                 <li class="page-item"><a class="page-link" href="#">42</a></li>
                 <li class="page-item"><a class="page-link" href="#">43</a></li>
@@ -147,6 +161,8 @@
 
               <hr width="100%">
               <h5 style="text-align: center;">Section B</h5>
+              <h6 style="text-align: center; margin-left : -40px; font-size: small;">Numerical Type Questions</h6>
+
 
               <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">61</a></li>
@@ -190,5 +206,3 @@
         
     </div>
 </div>
-<br>
-<br>
