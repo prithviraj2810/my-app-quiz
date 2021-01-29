@@ -7,13 +7,15 @@ import { TestComponent } from './test/test.component';
 import { ProfileComponent } from './profile/profile.component';
 import {InstructionsComponent} from './instructions/instructions.component'
 import { Guard } from './guard.service';
+import { ExamGuardService } from './exam-guard.service';
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'test', canActivate : [ Guard ], component: TestComponent},
+  {path: 'test', canActivate : [ Guard , ExamGuardService], component: TestComponent},
   {path: 'profile', canActivate : [ Guard ], component: ProfileComponent},
-  {path: 'instructions', canActivate : [ Guard ],component: InstructionsComponent}
+  {path: 'instructions', canActivate : [ Guard , ExamGuardService],component: InstructionsComponent}
   
 ];
 

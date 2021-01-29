@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
     if (this.passcode == null || this.passcode == "") {
       location.href = "/profile"
     } else if ( this.passcode == password ) {
+      localStorage.setItem('exam_pin', this.passcode)
       location.href = "/instructions"
     } 
   }

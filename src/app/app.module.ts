@@ -13,6 +13,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './firebase.service';
 import { Guard } from './guard.service';
+import { ExamGuardService } from './exam-guard.service';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -52,6 +53,7 @@ import { InstructionsComponent } from './instructions/instructions.component';
   providers: [
     FirebaseService,
     Guard,
+    ExamGuardService,
     //{ provide: ORIGIN, useValue: 'https://assistme-39d97.web.app' }
     { provide: ORIGIN, useValue: 'http://localhost:5001' }
 
