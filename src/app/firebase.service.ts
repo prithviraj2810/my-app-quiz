@@ -86,7 +86,6 @@ export class FirebaseService {
   }
 
 
-
   submitAnswers(exam_id, answers){
     const callable = this.fns.httpsCallable('submitAnswers');
     const data={ examid : exam_id, answers: answers, college_id : this.college};
@@ -98,6 +97,38 @@ export class FirebaseService {
     
   }
 
+
+  submit(exam_id, institution_id, answers){
+    /*
+    submit(){
+    //this.authService.logout()
+    const exam_id = 'exam_123x';
+    const institution_id = 'DPS';
+    const answers = [1,2,4,3,4,4,32]
+    this.authService.submit(exam_id, institution_id, answers).then((res) => {
+      if (res.code==="success"){
+        console.log(res.message);
+        // what you want to do after submission successfully
+      }
+      else{
+        console.log(res.message);
+        // what you want to do if submission fails
+      }
+
+    });
+  }
+    */
+
+    const email_id = this.getUsername();
+    var updates = {};
+    updates['results/'+institution_id+'/'+exam_id+'/'+email_id] = answers;
+    return this.database.database.ref().update(
+      updates).then((res)=>
+      {
+        return { message : "Submission Succcessfull" , code: 'success'};
+    }).catch(error => { 
+      return { message : error.message , code: 'error'};});
+  }
 
   
   // getexams(){
