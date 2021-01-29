@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -80,7 +81,7 @@ export class TestComponent implements OnInit {
   sum_mark_rev = 0
   radiostatus: false
   status: Array<any> = new Array(this.question.length).fill("");
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
