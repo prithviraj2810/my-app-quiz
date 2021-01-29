@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../firebase.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -81,7 +82,9 @@ export class TestComponent implements OnInit {
   sum_mark_rev = 0
   radiostatus: false
   status: Array<any> = new Array(this.question.length).fill("");
-  constructor(private router: Router) { }
+  errmessage: string
+  
+  constructor(private router: Router, private authService: FirebaseService) { }
 
   ngOnInit(): void {
   }
@@ -283,4 +286,24 @@ export class TestComponent implements OnInit {
   }
   
   
+testsubmit() {
+  var response = confirm("Are you sure you want to submit your answers before the time?")
+  if (response) {
+    var exam_id = "Test1";
+    var inst_id = "DPS";
+    this.authService.submit(exam_id, inst_id, this.answers).then((res) => {
+     if (res.code === "success") {
+       this.authService.logout()
+       this.router.navigate(["/"])
+      }
+      else {
+        this.errmessage = res.message
+      }
+    });
+    
+  }
+ }
+
+
+
   }
