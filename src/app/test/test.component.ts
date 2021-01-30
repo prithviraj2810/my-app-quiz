@@ -10,94 +10,52 @@ import { storage } from 'firebase';
 })
 export class TestComponent implements OnInit {
 
-  question =
-  [
-    {
-    que: "What is your language?",
-    choices: [ "Kannada", "Hindi", "English"]
-    
-    },
-
-    {
-    que: "What is your city?",
-    choices: ["Dharwad", "Hubli", "belgaum", "question1"]
-    },
-
-    {
-      que: "What is your language?",
-      choices: [ "Kannada", "Hindi", "English", "question2" ]
-    },
-
-    {
-      que: "What is your city?",
-      choices: ["Dharwad", "Hubli", "belgaum", "question3" ]
-    },
-
-    {
-      que: "What is your language?",
-      choices: [ "Kannada", "Hindi", "English"]
-      
-      },
-  
-      {
-      que: "What is your city?",
-      choices: ["Dharwad", "Hubli", "belgaum", "question1"]
-      },
-  
-      {
-        que: "What is your language?",
-        choices: [ "Kannada", "Hindi", "English", "question2" ]
-      },
-  
-      {
-        que: "What is your city?",
-        choices: ["Dharwad", "Hubli", "belgaum", "question3" ]
-      },
-
-      {
-        que: "What is your language?",
-        choices: [ "Kannada", "Hindi", "English"]
-        
-        },
-    
-        {
-        que: "What is your city?",
-        choices: ["Dharwad", "Hubli", "belgaum", "question1"]
-        },      
-
-  ]  
-
-  databasequestions: any
-
-
-  demo: string
+  questions: any
   index=0
   ans: any
-  answers: Array<any>
- tempanswers: Array<any> = new Array(this.question.length).fill(null);
-  not_visited: Array<any> = new Array(this.question.length).fill(1);
-  sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0) - 1;
-  not_answered: Array<any> = new Array(this.question.length).fill(0);
+  answers:Array<any>
+  tempanswers: Array<any>
+  not_visited: Array<any>
+  sum_not_visited: any
+  not_answered: Array<any>
   sum_not_answered = 0
-  answered: Array<any> = new Array(this.question.length).fill(0);
+  answered: Array<any>
   sum_answered = 0
-  save_mark_rev: Array<any> = new Array(this.question.length).fill(0);
+  save_mark_rev: Array<any>
   sum_save_mark_rev = 0
-  mark_rev: Array<any> = new Array(this.question.length).fill(0);
+  mark_rev: Array<any>
   sum_mark_rev = 0
   radiostatus: false
-  status: Array<any> = new Array(this.question.length).fill("");
+  status: Array<any>
   errmessage: string
   
-  constructor(private router: Router, private authService: FirebaseService) { }
+  constructor(private router: Router, private authService: FirebaseService) { 
+    this.authService.getquestions().then((res) => {
+      if (res.code==="success"){
+        this.questions = res.message//res.message will give you questions list
+        console.log(res.message);
+      }
+      else{
+        console.log(res.message);
+        //res.message will give you error here
+      }
 
-  ngOnInit(): void {
+    });
 
-    this.databasequestions = this.authService.getquestions()
-    this.answers = new Array(this.question.length).fill(null);
-  
+    this.answers = new Array(this.questions.length).fill("")
+    this.tempanswers = new Array(this.questions.length).fill(null);
+    this.not_visited = new Array(this.questions.length).fill(1);
+    this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0) - 1;
+    this.not_answered = new Array(this.questions.length).fill(0);
+    this.answered = new Array(this.questions.length).fill(0);
+    this.save_mark_rev = new Array(this.questions.length).fill(0);
+    this.mark_rev = new Array(this.questions.length).fill(0);
+    this.status= new Array(this.questions.length).fill("");
   }
 
+  ngOnInit() {
+
+  }
   
 
   change(event : any, index: any): void {
@@ -105,8 +63,8 @@ export class TestComponent implements OnInit {
   }
 
   reset() {
-    this.ans = null
-    this.answers[this.index] = null
+    this.ans = ""
+    this.answers[this.index] = ""
     this.answered[this.index] = 0
     this.radiostatus = false
     return this.radiostatus
@@ -122,12 +80,12 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0);
-    if (this.answers[this.index - 1] != null) {
+    if (this.answers[this.index - 1] != "") {
       this.answered[this.index - 1] = 1
       this.status[this.index-1] = "savenext"
     }
     this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
-    if (this.answers[this.index - 1] == null) {
+    if (this.answers[this.index - 1] == "") {
       this.not_answered[this.index - 1] = 1
       this.status[this.index-1] = "notanswered"
     } else {
@@ -149,7 +107,7 @@ export class TestComponent implements OnInit {
   prev() : void {
     this.tempanswers[this.index] = this.ans 
     this.index -= 1;
-    if (this.answers[this.index] != null) {
+    if (this.answers[this.index] != "") {
       this.ans = this.answers[this.index]
     }
     else {
@@ -160,7 +118,7 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0);
-    if (this.answers[this.index+1] == null)  {
+    if (this.answers[this.index+1] == "")  {
       if (this.mark_rev[this.index + 1] != 1) {
         this.not_answered[this.index + 1] = 1
       this.status[this.index+1] = "notanswered"
@@ -175,7 +133,7 @@ export class TestComponent implements OnInit {
   next() : void {
     this.tempanswers[this.index] = this.ans 
     this.index += 1;
-    if (this.answers[this.index] != null) {
+    if (this.answers[this.index] != "") {
     this.ans = this.answers[this.index]
     }
     else {
@@ -186,7 +144,7 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0)
-    if (this.answers[this.index-1] == null)  {
+    if (this.answers[this.index-1] == "")  {
       if (this.mark_rev[this.index - 1] != 1) {
         this.not_answered[this.index - 1] = 1
       this.status[this.index-1] = "notanswered"
@@ -201,7 +159,7 @@ export class TestComponent implements OnInit {
 
   navigate(queno: any) {
     this.tempanswers[this.index] = this.ans 
-    if (this.answers[this.index] == null)  {
+    if (this.answers[this.index] == "")  {
       if (this.mark_rev[this.index] != 1) {
         this.not_answered[this.index] = 1
       this.status[this.index] = "notanswered"
@@ -209,7 +167,7 @@ export class TestComponent implements OnInit {
     }
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
     this.index = queno - 1
-    if (this.answers[this.index] != null) {
+    if (this.answers[this.index] != "") {
       this.ans = this.answers[this.index]
       }
       else {
@@ -232,7 +190,7 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0);
-    if (this.answers[this.index - 1] != null) {
+    if (this.answers[this.index - 1] != "") {
       this.save_mark_rev[this.index - 1] = 1
       this.status[this.index-1] = "save_mark_rev"
     } else {
@@ -241,7 +199,7 @@ export class TestComponent implements OnInit {
     }
     this.sum_save_mark_rev = this.save_mark_rev.reduce((a, b) => a + b, 0)
 
-    if (this.answers[this.index - 1] == null) {
+    if (this.answers[this.index - 1] == "") {
       this.not_answered[this.index - 1] = 1
       this.status[this.index-1] = "notanswered"
     } else {
@@ -249,7 +207,7 @@ export class TestComponent implements OnInit {
     }
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
 
-    if (this.answers[this.index - 1] == null) {
+    if (this.answers[this.index - 1] == "") {
       this.answered[this.index - 1] = 1
       this.status[this.index - 1] = "answered"
     } else {
@@ -265,8 +223,8 @@ export class TestComponent implements OnInit {
   }
 
   mark_review(index: any) {
-    if (this.answers[this.index] != null) {
-      this.answers[this.index] = null
+    if (this.answers[this.index] != "") {
+      this.answers[this.index] = ""
       this.answered[this.index] = 0
     }
     this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
@@ -288,7 +246,7 @@ export class TestComponent implements OnInit {
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
     if (this.save_mark_rev[this.index - 1] == 1) {
       this.save_mark_rev[this.index - 1] = 0
-      this.answers[this.index] = null
+      this.answers[this.index] = ""
     }
     this.mark_rev[this.index-1] = 1
     this.status[this.index-1] = "mark_rev"
