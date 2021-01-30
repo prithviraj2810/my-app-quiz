@@ -148,10 +148,105 @@ export class FirebaseService {
   // })
   
    getquestions() {
-    this.exam_id = localStorage.getItem('exam_name')
-    this.passcode = localStorage.getItem('exam_pin')
-    this.college = localStorage.getItem('college')
-   }
-  
+    /*
+    getquestions() {    
     
+      this.authService.getquestions().then((res) => {
+        if (res.code==="success"){
+          //res.message will give you questions list
+          console.log(res.message);
+        }
+        else{
+          console.log(res.message);
+          //res.message will give you error here
+        }
+ 
+      });
+      }
+      */
+    this.exam_id = localStorage.getItem('exam_name')
+    this.college = localStorage.getItem('college')
+    return this.database.database.ref('/Institutions/'+this.college+'/'+this.exam_id).once('value').then((snapshot) => {
+      return { message : snapshot.val().questions , code: 'success'};}).catch(error => { 
+        return { message : error.message , code: 'error'};});
+    
+}
+/*
+      Sample how questions are stored in database
+******* Format *******
+"Institutions": {
+  "<college1>": {
+    "<exam_id>": {
+      questions : [q1,q2,q3]
+    }
+  },
+  "<college2>": {
+    "<exam_id>": {
+      questions : [q1,q2,q3]
+    }
+  }
+}
+******* example ********
+"Institutions":{
+    "DPS": {
+      "exam_123": {
+        "questions": [
+          {
+          "que": "What is your language?",
+          "choices": [ "Kannada", "Hindi", "English"]
+          
+          },
+      
+          {
+          "que": "What is your city?",
+          "choices": ["Dharwad", "Hubli", "belgaum", "question1"]
+          },
+      
+          {
+            "que": "What is your language?",
+            "choices": [ "Kannada", "Hindi", "English", "question2" ]
+          },
+      
+          {
+            "que": "What is your city?",
+            "choices": ["Dharwad", "Hubli", "belgaum", "question3" ]
+          },
+      
+          {
+            "que": "What is your language?",
+            "choices": [ "Kannada", "Hindi", "English"]
+            
+            },
+        
+            {
+            "que": "What is your city?",
+            "choices": ["Dharwad", "Hubli", "belgaum", "question1"]
+            },
+        
+            {
+              "que": "What is your language?",
+              "choices": [ "Kannada", "Hindi", "English", "question2" ]
+            },
+        
+            {
+              "que": "What is your city?",
+              "choices": ["Dharwad", "Hubli", "belgaum", "question3" ]
+            },
+      
+            {
+              "que": "What is your language?",
+              "choices": [ "Kannada", "Hindi", "English"]
+              
+              },
+          
+              {
+              "que": "What is your city?",
+              "choices": ["Dharwad", "Hubli", "belgaum", "question1"]
+              }     
+        ]
+      }
+    }
+  }
+
+*/
 }
