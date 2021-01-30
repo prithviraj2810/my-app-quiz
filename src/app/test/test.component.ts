@@ -10,7 +10,7 @@ import { storage } from 'firebase';
 })
 export class TestComponent implements OnInit {
 
-  questions: any
+  questions: Array<any>
   index=2
   ans: any
   answers:Array<any>
@@ -36,10 +36,19 @@ export class TestComponent implements OnInit {
 
     this.authService.getquestions().then((res) => {
       if (res.code==="success"){
-        this.questions = res.message   //res.message will give you questions list
+         //res.message will give you questions list
         console.log(res.message);
-        const snapshotToArray = snapshot => Object.entries(snapshot).map(e => Object.assign(e[1], { key: e[0] }));
-        console.log(snapshotToArray(res.message));
+        this.questions = res.message;
+        //this.questions = Object.keys(res.message).map(key => {return {que: res.message[key].que, choices: Object.keys(res.message[key].choices).map(key2 => res.message[key].choices[key2])}});
+        this.answers = new Array(this.questions.length).fill("")
+        this.tempanswers = new Array(this.questions.length).fill(null);
+        this.not_visited = new Array(this.questions.length).fill(1);
+        this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0) - 1;
+        this.not_answered = new Array(this.questions.length).fill(0);
+        this.answered = new Array(this.questions.length).fill(0);
+        this.save_mark_rev = new Array(this.questions.length).fill(0);
+        this.mark_rev = new Array(this.questions.length).fill(0);
+        this.status= new Array(this.questions.length).fill("");
 
 
       }
@@ -51,15 +60,7 @@ export class TestComponent implements OnInit {
     });
 
 
-    this.answers = new Array(this.questions.length).fill("")
-    this.tempanswers = new Array(this.questions.length).fill(null);
-    this.not_visited = new Array(this.questions.length).fill(1);
-    this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0) - 1;
-    this.not_answered = new Array(this.questions.length).fill(0);
-    this.answered = new Array(this.questions.length).fill(0);
-    this.save_mark_rev = new Array(this.questions.length).fill(0);
-    this.mark_rev = new Array(this.questions.length).fill(0);
-    this.status= new Array(this.questions.length).fill("");
+    
 
 
     
