@@ -26,6 +26,12 @@
       <form>
         <h2 class="text-center"><strong>Already</strong> have an account</h2>
         <div class="form-group">
+
+          <div class="form-group">
+            <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="user.name" required
+                   >
+          </div>
+
           <input class="form-control" type="email" name="email" placeholder="Email" data-validation-type="email" [(ngModel)]="user.email" required
                  >
         </div>
@@ -35,8 +41,15 @@
         </div>
 
         <div class="form-group">
-          <input class="form-control" type="text" name="college" placeholder="College name" [(ngModel)]="user.institution" required
+          <input class="form-control" list="colleges" name="college" placeholder="College name" [(ngModel)]="user.institution" required
                  >
+                 <datalist id="colleges">
+                  <option value="DPS">
+                  <option value="NYU">
+                  <option value="UIUC">
+                  <option value="UCSD">
+                  <option value="UCLA">
+                </datalist>
         </div>
 
         <div class="form-group">

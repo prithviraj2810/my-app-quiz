@@ -27,12 +27,8 @@ export class ProfileComponent implements OnInit {
   pass1 = "abcdef";
   pass2 = "ghijkl";
   pass3 = "mnopqr";
-  example = [
-    {
-      "que" : "What?",
-      "choicesss" : ["zzz", "vvv" ]
-    }
-  ]
+  college:any
+ 
 
 
   
@@ -41,16 +37,11 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(private authService: FirebaseService, private router: Router) {
-    this.username=this.authService.getUsername();
-    //authService.getexams();
-    this.examobject=authService.examsRef;
-    this.examobject.valueChanges().subscribe((exams) => { 
-    this.exams = exams;
-  });
+    this.username = window.localStorage.getItem("username")
+    this.college =  window.localStorage.getItem("college")
     }
 
   ngOnInit(): void {
-    
   }
    
   submit(exam_id: any, password: any): void {
@@ -60,7 +51,7 @@ export class ProfileComponent implements OnInit {
     } else if ( this.passcode == password ) {
       var exam_name = exam_id
       localStorage.setItem('exam_pin', this.passcode)
-      localStorage.setItem('exam_id', exam_name)
+      window.localStorage.setItem('exam_id', exam_name)
       location.href = "/instructions"
     } 
   }

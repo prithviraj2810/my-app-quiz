@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireFunctionsModule, ORIGIN } from '@angular/fire/functions';
+import {CountdownModule} from 'ngx-countdown'
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -48,7 +49,8 @@ import { InstructionsComponent } from './instructions/instructions.component';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    CountdownModule
   ],
   providers: [
     FirebaseService,

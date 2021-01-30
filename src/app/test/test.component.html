@@ -7,9 +7,9 @@
 
         <div class="nav-right">
                 <ul style="list-style: none;">
-                    <li style="color: #606263; margin: 0;">Name : Prithviraj Desai</li>
+                    <li style="color: #606263; margin: 0;">Name : {{username}}</li>
                     <hr style="margin: 5px;">
-                    <li style="color: #606263; margin: 0;">College : XYZ PU University</li>
+                    <li style="color: #606263; margin: 0;">College : {{college}}</li>
                 </ul>
         </div>
   </div>
@@ -23,7 +23,7 @@
               <button mat-raised-button class = "subjects next-prev-sub" (click) = "navigate(1)" >Physics</button>
               <button mat-raised-button class = "subjects next-prev-sub" (click) = "navigate(21)">Chemistry</button>
               <button mat-raised-button class = "subjects next-prev-sub" (click) = "navigate(41)">Maths</button>
-              <h6 class="card-subtitle">Time left: 02:59:59</h6>
+              <h6 class="card-subtitle">Time left: <countdown #countdown [config]="{leftTime: 400}" (event)= "onTimerFinished($event)">$!m!:$!s!</countdown></h6>
               
             </div>
         </div>

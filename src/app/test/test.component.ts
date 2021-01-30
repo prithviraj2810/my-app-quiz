@@ -11,7 +11,8 @@ import { storage } from 'firebase';
 export class TestComponent implements OnInit {
 
   questions: Array<any>
-  index=2
+  username: any
+  index=0
   ans: any
   answers:Array<any>
   tempanswers: Array<any>
@@ -28,19 +29,24 @@ export class TestComponent implements OnInit {
   radiostatus: false
   status: Array<any>
   errmessage: string
+  college: any
+ 
   
-  constructor(private router: Router, private authService: FirebaseService) {     }
+  constructor(private router: Router, private authService: FirebaseService) { 
+     this.college = window.localStorage.getItem("college")
+     this.username = window.localStorage.getItem("username")   }
 
   ngOnInit() {
+    var exam_id = window.localStorage.getItem("exam_id")
+    var college = window.localStorage.getItem("college")
 
-
-    this.authService.getquestions().then((res) => {
+    this.authService.getquestions(exam_id, college).then((res) => {
       if (res.code==="success"){
          //res.message will give you questions list
         console.log(res.message);
         this.questions = res.message;
         //this.questions = Object.keys(res.message).map(key => {return {que: res.message[key].que, choices: Object.keys(res.message[key].choices).map(key2 => res.message[key].choices[key2])}});
-        this.answers = new Array(this.questions.length).fill("")
+        this.answers = new Array(this.questions.length).fill(null)
         this.tempanswers = new Array(this.questions.length).fill(null);
         this.not_visited = new Array(this.questions.length).fill(1);
         this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0) - 1;
@@ -49,8 +55,6 @@ export class TestComponent implements OnInit {
         this.save_mark_rev = new Array(this.questions.length).fill(0);
         this.mark_rev = new Array(this.questions.length).fill(0);
         this.status= new Array(this.questions.length).fill("");
-
-
       }
       else{
         console.log(res.message);
@@ -59,11 +63,6 @@ export class TestComponent implements OnInit {
 
     });
 
-
-    
-
-
-    
   }
   
 
@@ -73,8 +72,8 @@ export class TestComponent implements OnInit {
   }
 
   reset() {
-    this.ans = ""
-    this.answers[this.index] = ""
+    this.ans = null
+    this.answers[this.index] = null
     this.answered[this.index] = 0
     this.radiostatus = false
     return this.radiostatus
@@ -90,12 +89,12 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0);
-    if (this.answers[this.index - 1] != "") {
+    if (this.answers[this.index - 1] != null) {
       this.answered[this.index - 1] = 1
       this.status[this.index-1] = "savenext"
     }
     this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
-    if (this.answers[this.index - 1] == "") {
+    if (this.answers[this.index - 1] == null) {
       this.not_answered[this.index - 1] = 1
       this.status[this.index-1] = "notanswered"
     } else {
@@ -117,7 +116,7 @@ export class TestComponent implements OnInit {
   prev() : void {
     this.tempanswers[this.index] = this.ans 
     this.index -= 1;
-    if (this.answers[this.index] != "") {
+    if (this.answers[this.index] != null) {
       this.ans = this.answers[this.index]
     }
     else {
@@ -128,7 +127,7 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0);
-    if (this.answers[this.index+1] == "")  {
+    if (this.answers[this.index+1] == null)  {
       if (this.mark_rev[this.index + 1] != 1) {
         this.not_answered[this.index + 1] = 1
       this.status[this.index+1] = "notanswered"
@@ -143,7 +142,7 @@ export class TestComponent implements OnInit {
   next() : void {
     this.tempanswers[this.index] = this.ans 
     this.index += 1;
-    if (this.answers[this.index] != "") {
+    if (this.answers[this.index] != null) {
     this.ans = this.answers[this.index]
     }
     else {
@@ -154,7 +153,7 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0)
-    if (this.answers[this.index-1] == "")  {
+    if (this.answers[this.index-1] == null)  {
       if (this.mark_rev[this.index - 1] != 1) {
         this.not_answered[this.index - 1] = 1
       this.status[this.index-1] = "notanswered"
@@ -169,7 +168,7 @@ export class TestComponent implements OnInit {
 
   navigate(queno: any) {
     this.tempanswers[this.index] = this.ans 
-    if (this.answers[this.index] == "")  {
+    if (this.answers[this.index] == null)  {
       if (this.mark_rev[this.index] != 1) {
         this.not_answered[this.index] = 1
       this.status[this.index] = "notanswered"
@@ -177,7 +176,7 @@ export class TestComponent implements OnInit {
     }
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
     this.index = queno - 1
-    if (this.answers[this.index] != "") {
+    if (this.answers[this.index] != null) {
       this.ans = this.answers[this.index]
       }
       else {
@@ -191,6 +190,10 @@ export class TestComponent implements OnInit {
   }
 
   save_mark_review(index: any) {
+    if (this. ans == null) {
+      window.alert("Please select a response to proceed")
+    } else {
+      
     this.answers[this.index] = this.ans
     this.index += 1;
     this.ans = this.answers[this.index]
@@ -200,16 +203,13 @@ export class TestComponent implements OnInit {
       this.not_visited[this.index] = 0
     }
     this.sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0);
-    if (this.answers[this.index - 1] != "") {
+    if (this.answers[this.index - 1] != null) {   
       this.save_mark_rev[this.index - 1] = 1
       this.status[this.index-1] = "save_mark_rev"
-    } else {
-      alert("Please choose and option to proceed")
-      this.index -= 1
     }
     this.sum_save_mark_rev = this.save_mark_rev.reduce((a, b) => a + b, 0)
 
-    if (this.answers[this.index - 1] == "") {
+    if (this.answers[this.index - 1] == null) {
       this.not_answered[this.index - 1] = 1
       this.status[this.index-1] = "notanswered"
     } else {
@@ -217,7 +217,7 @@ export class TestComponent implements OnInit {
     }
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
 
-    if (this.answers[this.index - 1] == "") {
+    if (this.answers[this.index - 1] == null) {
       this.answered[this.index - 1] = 1
       this.status[this.index - 1] = "answered"
     } else {
@@ -231,10 +231,11 @@ export class TestComponent implements OnInit {
     this.sum_mark_rev = this.mark_rev.reduce((a, b) => a + b, 0)
   
   }
+    }
 
   mark_review(index: any) {
-    if (this.answers[this.index] != "") {
-      this.answers[this.index] = ""
+    if (this.answers[this.index] != null) {
+      this.answers[this.index] = null
       this.answered[this.index] = 0
     }
     this.sum_answered = this.answered.reduce((a, b) => a + b, 0)
@@ -256,7 +257,7 @@ export class TestComponent implements OnInit {
     this.sum_not_answered = this.not_answered.reduce((a, b) => a + b, 0)
     if (this.save_mark_rev[this.index - 1] == 1) {
       this.save_mark_rev[this.index - 1] = 0
-      this.answers[this.index] = ""
+      this.answers[this.index] = null
     }
     this.mark_rev[this.index-1] = 1
     this.status[this.index-1] = "mark_rev"
@@ -268,9 +269,9 @@ export class TestComponent implements OnInit {
 testsubmit() {
   var response = confirm("Are you sure you want to submit your answers before the time?")
   if (response) {
-    var exam_id = "Test1";
-    var inst_id = "DPS";
-    this.authService.submit(exam_id, inst_id, this.answers).then((res) => {
+    var exam_id = window.localStorage.getItem("exam_id")
+    var college = window.localStorage.getItem("college")
+    this.authService.submit(exam_id, college, this.answers).then((res) => {
      if (res.code === "success") {
        this.authService.logout()
        this.router.navigate(["/"])
@@ -283,6 +284,22 @@ testsubmit() {
   }
  }
 
-
-
+ onTimerFinished(event: any) {
+  if (event.action == 'done') {
+    alert("Time is up. Your responses will be submitted")
+    var exam_id = window.localStorage.getItem("exam_id")
+    var college = window.localStorage.getItem("college")
+    this.authService.submit(exam_id, college, this.answers).then((res) => {
+     if (res.code === "success") {
+       this.authService.logout()
+       this.router.navigate(["/"])
+      }
+      else {
+        this.errmessage = res.message
+      }
+    });
+    
   }
+  }
+}
+

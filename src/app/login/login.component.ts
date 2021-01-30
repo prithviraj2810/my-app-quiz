@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user = {
+    name: '',
     email: '',
     password: '',
     institution:''
@@ -32,8 +33,10 @@ export class LoginComponent implements OnInit {
      this.authService.login(this.user.email, this.user.password).then((res) => {
        if (res.code==="success"){
          console.log(this.authService.getUsername());
-         localStorage.setItem("college", this.user.institution)
+         window.localStorage.setItem("college", this.user.institution)
+         window.localStorage.setItem("username", this.user.name)
          console.log(res.message);
+         console.log("college")
         this.router.navigate(['/profile']);
 
        }
