@@ -9,22 +9,30 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   user = {
     email: '',
-    password: ''
+    password: '',
+    institution:''
  };
+
+
+
   errmessage: string;
+
   
 
   constructor(private authService: FirebaseService, private router: Router) {}
 
   ngOnInit(): void {
     document.body.classList.add('bg-img');
+    
   }
 
 
   login() {    
+    
      this.authService.login(this.user.email, this.user.password).then((res) => {
        if (res.code==="success"){
          console.log(this.authService.getUsername());
+         localStorage.setItem("college", this.user.institution)
          console.log(res.message);
         this.router.navigate(['/profile']);
 

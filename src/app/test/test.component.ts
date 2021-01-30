@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { Router } from '@angular/router';
+import { storage } from 'firebase';
 
 @Component({
   selector: 'app-test',
@@ -64,12 +65,16 @@ export class TestComponent implements OnInit {
         choices: ["Dharwad", "Hubli", "belgaum", "question1"]
         },      
 
-  ]
+  ]  
 
+  databasequestions: any
+
+
+  demo: string
   index=0
   ans: any
-  answers: Array<any> = new Array(this.question.length).fill(null);
-  tempanswers: Array<any> = new Array(this.question.length).fill(null);
+  answers: Array<any>
+ tempanswers: Array<any> = new Array(this.question.length).fill(null);
   not_visited: Array<any> = new Array(this.question.length).fill(1);
   sum_not_visited = this.not_visited.reduce((a, b) => a + b, 0) - 1;
   not_answered: Array<any> = new Array(this.question.length).fill(0);
@@ -87,7 +92,13 @@ export class TestComponent implements OnInit {
   constructor(private router: Router, private authService: FirebaseService) { }
 
   ngOnInit(): void {
+
+    this.databasequestions = this.authService.getquestions()
+    this.answers = new Array(this.question.length).fill(null);
+  
   }
+
+  
 
   change(event : any, index: any): void {
     this.ans = event.target.value

@@ -12,12 +12,18 @@ import { Router } from '@angular/router';
 
 export class ProfileComponent implements OnInit {
 
+
+
   errmessage: string;
   username : string;
   examobject: any;
   exams: any[];
   passcode : any;
   password : any;
+  test1 = "Test 1"
+  test2 = "Test 2"
+  test3 = "Test 3"
+  test4 = "Test 4"
   pass1 = "abcdef";
   pass2 = "ghijkl";
   pass3 = "mnopqr";
@@ -41,12 +47,14 @@ export class ProfileComponent implements OnInit {
     
   }
    
-  submit(password: any): void {
+  submit(exam_id: any, password: any): void {
     this.passcode = prompt("Please type the passcode for the exam")
     if (this.passcode == null || this.passcode == "") {
       location.href = "/profile"
     } else if ( this.passcode == password ) {
+      var exam_name = exam_id
       localStorage.setItem('exam_pin', this.passcode)
+      localStorage.setItem('exam_id', exam_name)
       location.href = "/instructions"
     } 
   }

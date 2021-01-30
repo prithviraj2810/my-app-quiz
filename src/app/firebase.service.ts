@@ -11,7 +11,10 @@ import { AngularFireFunctions } from '@angular/fire/functions';
   providedIn: 'root'
 })
 export class FirebaseService {
-  
+
+
+  exam_id: any
+  passcode: any
   user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
   public college:string;
@@ -21,7 +24,7 @@ export class FirebaseService {
  
 
   constructor(private firebaseAuth: AngularFireAuth, private database: AngularFireDatabase,private fns: AngularFireFunctions) {
-    this.college = 'ABCPUcollege'
+    // this.college = 'ABCPUcollege'
     this.user = firebaseAuth.authState;
     this.user.subscribe(
       (user) => {
@@ -144,7 +147,11 @@ export class FirebaseService {
     
   // })
   
-   
+   getquestions() {
+    this.exam_id = localStorage.getItem('exam_name')
+    this.passcode = localStorage.getItem('exam_pin')
+    this.college = localStorage.getItem('college')
+   }
   
     
 }
