@@ -11,7 +11,7 @@ import { storage } from 'firebase';
 export class TestComponent implements OnInit {
 
   questions: any
-  index=0
+  index=2
   ans: any
   answers:Array<any>
   tempanswers: Array<any>
@@ -29,11 +29,19 @@ export class TestComponent implements OnInit {
   status: Array<any>
   errmessage: string
   
-  constructor(private router: Router, private authService: FirebaseService) { 
+  constructor(private router: Router, private authService: FirebaseService) {     }
+
+  ngOnInit() {
+
+
     this.authService.getquestions().then((res) => {
       if (res.code==="success"){
-        this.questions = res.message//res.message will give you questions list
+        this.questions = res.message   //res.message will give you questions list
         console.log(res.message);
+        const snapshotToArray = snapshot => Object.entries(snapshot).map(e => Object.assign(e[1], { key: e[0] }));
+        console.log(snapshotToArray(res.message));
+
+
       }
       else{
         console.log(res.message);
@@ -41,6 +49,7 @@ export class TestComponent implements OnInit {
       }
 
     });
+
 
     this.answers = new Array(this.questions.length).fill("")
     this.tempanswers = new Array(this.questions.length).fill(null);
@@ -51,12 +60,12 @@ export class TestComponent implements OnInit {
     this.save_mark_rev = new Array(this.questions.length).fill(0);
     this.mark_rev = new Array(this.questions.length).fill(0);
     this.status= new Array(this.questions.length).fill("");
-  }
 
-  ngOnInit() {
 
+    
   }
   
+
 
   change(event : any, index: any): void {
     this.ans = event.target.value

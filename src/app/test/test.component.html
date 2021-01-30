@@ -34,10 +34,10 @@
               <hr width=100%; style="margin: 20px;">
               <h6 class="card-subtitle">{{questions[index].que}}</h6>
               <div *ngIf = "index <= 4">
-                <div *ngFor="let choice of question[index].choices index as i">
+                <div *ngFor="let choice of questions[index].choices index as i">
                   <p>{{i+1}}) {{choice}}</p>
                 </div>
-                  <ng-container *ngFor="let choice of question[index].choices index as i">
+                  <ng-container *ngFor="let choice of questions[index].choices index as i">
                     <label for="choice_{{choice}}">
                       <input id="choice_{{choice}}" [value]='i+1' type="radio" name="choices" [(ngModel)]="ans">
                       {{i+1}}

@@ -163,9 +163,12 @@ export class FirebaseService {
  
       });
       }
-      */
-    this.exam_id = localStorage.getItem('exam_name')
-    this.college = localStorage.getItem('college')
+    //   */
+    // this.exam_id = localStorage.getItem('exam_name')
+    // this.college = localStorage.getItem('college')
+    
+    this.exam_id = "exam_123"
+    this.college = "DPS"
     return this.database.database.ref('/Institutions/'+this.college+'/'+this.exam_id).once('value').then((snapshot) => {
       return { message : snapshot.val().questions , code: 'success'};}).catch(error => { 
         return { message : error.message , code: 'error'};});

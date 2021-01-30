@@ -20,13 +20,19 @@ export class ProfileComponent implements OnInit {
   exams: any[];
   passcode : any;
   password : any;
-  test1 = "Test 1"
+  test1 = "exam_123"
   test2 = "Test 2"
   test3 = "Test 3"
   test4 = "Test 4"
   pass1 = "abcdef";
   pass2 = "ghijkl";
   pass3 = "mnopqr";
+  example = [
+    {
+      "que" : "What?",
+      "choicesss" : ["zzz", "vvv" ]
+    }
+  ]
 
 
   
